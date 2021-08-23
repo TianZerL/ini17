@@ -508,7 +508,7 @@ namespace ini17
             sections.clear();
         }
 
-        bool generateFile(std::string_view filePath)
+        bool generateFile(std::string_view filePath) const
         {
             std::ofstream file(filePath.data());
             if (!file.is_open())
@@ -518,7 +518,7 @@ namespace ini17
             return true;
         }
 
-        std::string generate()
+        std::string generate() const
         {
             std::string ret;
             for (auto &&section : sections)
