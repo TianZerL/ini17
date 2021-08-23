@@ -97,6 +97,11 @@ namespace ini17
                 return detail::fromStringCast<T>(valueReference);
             }
 
+            operator const std::string &() const
+            {
+                return valueReference;
+            }
+
         private:
             std::string &valueReference;
         };
