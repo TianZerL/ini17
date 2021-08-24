@@ -509,6 +509,16 @@ namespace ini17
             sections.clear();
         }
 
+        void setHeader(std::string_view msg)
+        {
+            header = msg;
+        }
+
+        void setFooter(std::string_view msg)
+        {
+            footer = msg;
+        }
+
         bool generateFile(std::string_view filePath) const
         {
             std::ofstream file(filePath.data());
@@ -522,6 +532,11 @@ namespace ini17
         std::string generate() const
         {
             std::string ret;
+            if (!header.empty())
+            {
+                ret.push_back(';');
+                ret.append(header);
+            }
             for (auto &&section : sections)
             {
                 auto &&kvMap = section.getKeyValueMap();
@@ -539,11 +554,18 @@ namespace ini17
                 }
                 ret.push_back('\n');
             }
-
+            if (!footer.empty())
+            {
+                ret.push_back(';');
+                ret.append(footer);
+                ret.push_back('\n');
+            }
             return ret;
         }
 
     private:
+        std::string header;
+        std::string footer;
         std::list<Section> sections;
     };
 
