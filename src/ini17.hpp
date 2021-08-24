@@ -211,7 +211,8 @@ namespace ini17
 
         bool parse(std::string_view src)
         {
-            result.clear();
+            if (!result.empty())
+                result.clear();
             auto tokens = tokenize(src);
             if (!tokens.has_value())
             {
