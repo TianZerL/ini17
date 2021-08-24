@@ -535,8 +535,7 @@ namespace ini17
             if (!header.empty())
             {
                 ret.push_back(';');
-                ret.append(header);
-                ret.push_back('\n');
+                ret.append(header).append("\n\n");
             }
             for (auto &&section : sections)
             {
