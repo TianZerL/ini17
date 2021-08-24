@@ -30,9 +30,11 @@ namespace ini17
         template <typename T>
         inline T fromStringCast(const std::string &arg)
         {
+            static std::istringstream iss;
             T ret;
-            std::istringstream ss(arg);
-            ss >> ret;
+            iss.str(arg);
+            iss >> ret;
+            iss.clear();
             return ret;
         }
 
