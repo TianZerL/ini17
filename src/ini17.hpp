@@ -536,6 +536,7 @@ namespace ini17
             {
                 ret.push_back(';');
                 ret.append(header);
+                ret.push_back('\n');
             }
             for (auto &&section : sections)
             {
