@@ -31,7 +31,7 @@ namespace ini17
         inline T fromStringCast(const std::string &arg)
         {
             static std::istringstream iss;
-            T ret;
+            T ret{};
             iss.str(arg);
             iss >> ret;
             iss.clear();
@@ -406,7 +406,7 @@ namespace ini17
                 count++;
             }
 
-            return tokens;
+            return std::make_optional(tokens);
         }
 
         void analyze(const std::vector<detail::Token> &tokens)
